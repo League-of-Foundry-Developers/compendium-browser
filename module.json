@@ -9,26 +9,36 @@
     "styles": ["./compendium-browser.css"],
     "packs": [],
     "languages": [
-        {
-          "lang": "en",
-          "name": "English",
-          "path": "lang/en.json"
-        },
-        {
-          "lang": "ja",
-          "name": "Japanese",
-          "path": "lang/ja.json"
-        },
-        {
-          "lang": "fr",
-          "name": "French (FRANCE)",
-          "path": "lang/fr.json"
-        },
-        {
-			"lang": "pt-BR",
-			"name": "Português (Brasil)",
-			"path": "lang/pt-BR.json"
-		}
+      {
+        "lang": "en",
+        "name": "English",
+        "path": "lang/en.json"
+      },
+      {
+        "lang": "ja",
+        "name": "Japanese",
+        "path": "lang/ja.json"
+      },
+      {
+        "lang": "fr",
+        "name": "French (FRANCE)",
+        "path": "lang/fr.json"
+      },
+      {
+        "lang": "pt-BR",
+        "name": "Português (Brasil)",
+        "path": "lang/pt-BR.json"
+      },
+      {
+        "lang": "es",
+        "name": "Español",
+        "path": "lang/es.json"
+      },
+      {
+        "lang": "de",
+        "name": "Deutsch",
+        "path": "lang/de.json"
+      }
     ],
     "url": "https://github.com/syl3r86/compendium-browser",
     "manifest": "https://raw.githubusercontent.com/syl3r86/compendium-browser/master/module.json",

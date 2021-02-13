@@ -4,7 +4,7 @@
  */
 
 class SpellBrowser extends Application {
-    
+
     async initializeContent() {
         // load settings
         if (this.settings === undefined) {
@@ -138,7 +138,7 @@ class SpellBrowser extends Application {
 
         this.spellsLoaded = false;
         this.spellsLoading = true;
-        
+
         let unfoundSpells = '';
 
         let items = {
@@ -248,7 +248,7 @@ class SpellBrowser extends Application {
                             item.usesRessources = item5e.hasLimitedUses
 
                             items.items[(item._id)] = item;
-                        }                        
+                        }
                     }
                 });
             }
@@ -256,11 +256,11 @@ class SpellBrowser extends Application {
         if (unfoundSpells !== '') {
             console.log(`Spell Browser | List of Spells that don't have a class assosiated to them:`);
             console.log(unfoundSpells);
-        }        
+        }
         console.log('Spell Browser | Finished loading items');
         return items;
     }
-    
+
     async loadNpcs() {
         console.log('NPC Browser | Started loading NPCs');
 
@@ -269,7 +269,7 @@ class SpellBrowser extends Application {
         for (let pack of game.packs) {
             if (pack['metadata']['entity'] == "Actor" && this.settings.loadedNpcCompendium[pack.collection].load) {
                 await pack.getContent().then(async content => {
-                    
+
                     for (let npc of content) {
                         //console.log('%c '+npc.name, 'background: white; color: red')
                         npc = npc.data;
@@ -321,7 +321,7 @@ class SpellBrowser extends Application {
         console.log('NPC Browser | Finished loading NPCs');
         return npcs;
     }
-    
+
     activateListeners(html) {
         super.activateListeners(html);
         // localizing title
@@ -899,7 +899,7 @@ class SpellBrowser extends Application {
                 this.settings = settings;
             }
         });
-        
+
         // load settings from container and apply to default settings (available compendie might have changed)
         let settings = game.settings.get('compendiumBrowser', 'settings');
         for (let compKey in defaultSettings.loadedSpellCompendium) {
@@ -916,12 +916,12 @@ class SpellBrowser extends Application {
         defaultSettings.allowFeatBrowser = settings.allowFeatBrowser ? true : false;
         defaultSettings.allowItemBrowser = settings.allowItemBrowser ? true : false;
         defaultSettings.allowNpcBrowser = settings.allowNpcBrowser ? true : false;
-        
+
         if (game.user.isGM) {
             game.settings.set('compendiumBrowser', 'settings', defaultSettings);
             console.log("New default settings set");
             console.log(defaultSettings);
-        }   
+        }
         this.settings = defaultSettings;
     }
 
@@ -1031,7 +1031,10 @@ Hooks.on('ready', async function() {
             bard: game.i18n.localize("CMPBrowser.bard"),
             cleric: game.i18n.localize("CMPBrowser.cleric"),
             druid: game.i18n.localize("CMPBrowser.druid"),
+            fighter: game.i18n.localize("CMPBrowser.fighter"),
+            monk: game.i18n.localize("CMPBrowser.monk"),
             paladin: game.i18n.localize("CMPBrowser.paladin"),
+            rogue: game.i18n.localize("CMPBrowser.rogue"),
             ranger: game.i18n.localize("CMPBrowser.ranger"),
             sorcerer: game.i18n.localize("CMPBrowser.sorcerer"),
             warlock: game.i18n.localize("CMPBrowser.warlock"),
@@ -1050,18 +1053,17 @@ Hooks.on('ready', async function() {
     game.compendiumBrowser.addFeatFilter(game.i18n.localize("CMPBrowser.general"), game.i18n.localize("CMPBrowser.class"), 'classRequirement', 'select',
         {
             artificer: game.i18n.localize("CMPBrowser.artificer"),
-            barbarian: "Barbarian",
             bard: game.i18n.localize("CMPBrowser.bard"),
             cleric: game.i18n.localize("CMPBrowser.cleric"),
             druid: game.i18n.localize("CMPBrowser.druid"),
-            fighter: "Fighter",
-            monk: "Monk",
+            fighter: game.i18n.localize("CMPBrowser.fighter"),
+            monk: game.i18n.localize("CMPBrowser.monk"),
             paladin: game.i18n.localize("CMPBrowser.paladin"),
+            rogue: game.i18n.localize("CMPBrowser.rogue"),
             ranger: game.i18n.localize("CMPBrowser.ranger"),
-            rogue: "Rogue",
             sorcerer: game.i18n.localize("CMPBrowser.sorcerer"),
             warlock: game.i18n.localize("CMPBrowser.warlock"),
-            wizard: game.i18n.localize("CMPBrowser.wizard")
+            wizard: game.i18n.localize("CMPBrowser.wizard"),
         }, true);
 
     game.compendiumBrowser.addFeatFilter("Game Mechanics", game.i18n.localize("DND5E.ItemActivationCost"), 'data.activation.type', 'select', CONFIG.DND5E.abilityActivationTypes);
@@ -1099,7 +1101,7 @@ Hooks.on('ready', async function() {
     game.compendiumBrowser.addItemFilter("Item Subtype", "Weapon", 'data.weaponType', 'text', CONFIG.DND5E.weaponTypes);
     game.compendiumBrowser.addItemFilter("Item Subtype", "Equipment", 'data.armor.type', 'text', CONFIG.DND5E.equipmentTypes);
     game.compendiumBrowser.addItemFilter("Item Subtype", "Consumable", 'data.consumableType', 'text', CONFIG.DND5E.consumableTypes);
-    
+
     game.compendiumBrowser.addItemFilter("Magic Items", "Rarity", 'data.rarity', 'select', {
         Common: "Common",
         Uncommon: "Uncommon",

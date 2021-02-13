@@ -57,6 +57,8 @@
     "CMPBrowser.size": "Size",
     "CMPBrowser.spellBrowser":"Spell Browser",
     "CMPBrowser.npcBrowser":"NPC Browser",
+    "CMPBrowser.featBrowser": "Feat Browser",
+    "CMPBrowser.itemBrowser": "Item Browser",
     "CMPBrowser.settings":"Settings"
-    
+
 }
